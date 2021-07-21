@@ -15,8 +15,8 @@ def canUnlockAll(boxes):
             if key in box_to_open and key not in box_opened:
                 if boxes.index(box) == key:
                     break
-            else:
-                box_opened.append(key)
+                else:
+                    box_opened.append(key)
 
     if len(box_to_open) == len(box_opened):
         return True
