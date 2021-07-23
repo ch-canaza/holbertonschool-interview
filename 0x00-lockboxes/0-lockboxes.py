@@ -6,6 +6,18 @@ def canUnlockAll(boxes):
     function that determines if all boxes can be opened secuencially
     with keys contained in the other boxes
     """
+    #!/usr/bin/python3
+"""canUnlockAll module
+"""
+
+
+def canUnlockAll(boxes):
+    """canUnlockAll function to check if
+    boxes unlock or not
+    Args:
+        boxes (list): list of boxes (list)
+    Return: False if all boxes cannot unlock and True otherwise
+    """
     if type(boxes) is not list or not all(type(box) is list for box in boxes):
         return False
     if len(boxes) == 0:
@@ -14,19 +26,16 @@ def canUnlockAll(boxes):
         return True
     if not boxes[0] and len(boxes) > 1:
         return False
-    box_to_open = list(range(1, len(boxes)))
-    box_opened = []
-    for box in boxes:
-        if box == []:
-            break
-        for key in box:
-            if key in box_to_open and key not in box_opened:
-                if boxes.index(box) == key:
-                    break
-                else:
-                    box_opened.append(key)
-
-    if len(box_to_open) == len(box_opened):
-        return True
-    else:
-        return False
+    unlock = {k: False for k in range(len(boxes))}
+    unlock[0] = True
+    keys = [key for key in boxes[0]]
+    while keys:
+        new_k = []
+        for key in keys:
+            if key in unlock.keys() and unlock[key] is False:
+                new_k += boxes[key]
+                unlock[key] = True
+        if all(unlock.values()) and len(unlock) == len(boxes):
+            return True
+        keys = new_k
+    return False
