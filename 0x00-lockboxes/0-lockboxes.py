@@ -2,16 +2,6 @@
 
 
 def canUnlockAll(boxes):
-    """
-    function that determines if all boxes can be opened secuencially
-    with keys contained in the other boxes
-    """
-    #!/usr/bin/python3
-"""canUnlockAll module
-"""
-
-
-def canUnlockAll(boxes):
     """canUnlockAll function to check if
     boxes unlock or not
     Args:
@@ -39,3 +29,4 @@ def canUnlockAll(boxes):
             return True
         keys = new_k
     return False
+    
